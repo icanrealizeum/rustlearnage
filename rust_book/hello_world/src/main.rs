@@ -8,7 +8,8 @@
 //! rather than what follows).
 
 
-fn main() {
+//fn main() -> i32 { // cannot be done, RFC: https://github.com/rust-lang/rfcs/issues/1176
+fn main() { // main must have this format: https://doc.rust-lang.org/error-index.html#E0211
     println!("Hello, world!");
     println!(
         "Hello, world!"
@@ -163,6 +164,7 @@ fn main() {
         println!("{}", x);
     }
 
+    std::process::exit(2);
 }//main
 
 
