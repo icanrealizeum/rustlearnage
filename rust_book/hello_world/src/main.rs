@@ -164,7 +164,7 @@ fn main() { // main must have this format: https://doc.rust-lang.org/error-index
         println!("{}", x);
     }
 
-    std::process::exit(2);
+    std::process::exit(2);//caveats(doesn't execute Drop): https://doc.rust-lang.org/std/process/fn.exit.html
 }//main
 
 
