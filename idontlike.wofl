@@ -1,0 +1,13 @@
+* What I don't like:
+
+* the Copy trait
+  \ it modifies the move semantics
+  \ it implicitly does a copy during assignment
+  \ wish you would have to .copy() like .clone() is!
+  \ https://doc.rust-lang.org/nightly/book/ownership.html#copy-types
+  \ https://llogiq.github.io/2015/07/30/traits.html
+  * I should be using: & borrowing instead!
+  * TODO: find out how to underride the Copy trait or remove it somehow
+    \ a workaround could be, wrapping primitive types(which clearly have Copy trait implemented on them) into a struct like struct Foo(i32); and not implementing Copy on that struct!
+
+
