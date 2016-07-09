@@ -16,6 +16,7 @@ fn main() {
     //let &mut x;//XXX: same effect as the above! - NOPE different that let mut x above! cannot re-assign x!
     let &mut mut x;//XXX: - now can re-assign x!
     //let x:&mut Foo;//this makes sense! and is different
+    //ok it's all explained here: https://doc.rust-lang.org/nightly/book/mutability.html
 
     x = &mut z;
     x.a=41;
