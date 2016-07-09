@@ -46,10 +46,10 @@ fn main() {
     static FOO: i32 = 5;
     let x: &'static i32 = &FOO;
 
-    //shared ownership: // This is the simplest kind of multiple ownership possible. 
+    //shared ownership: // This is the simplest kind of multiple ownership possible.
     let car = Car { name: "DeLorean".to_string() };
     let car_owner = Rc::new(car);
-    for _ in range(0, 4) {
+    for _ in 0..4 {
         Wheel { size: 360, owner: car_owner.clone() };
     }
 
@@ -64,7 +64,7 @@ struct Foo<'a> {
 fn add_one(mut num: Box<i32>) -> Box<i32> {
     *num += 1;
     //To fix this, we can have add_one give ownership back when it's done with the box:
-    num 
+    num
         // "we return a(the same?u mean) box, and so the ownership is transferred back to y in main."
         //"We only have ownership for the duration of our function before giving it back. "
 }
@@ -74,4 +74,3 @@ fn add_one(mut num: Box<i32>) -> Box<i32> {
 fn add_one_borrows_arg(num: &mut i32) {
     *num += 1;
 }
-
