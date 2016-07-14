@@ -1,3 +1,5 @@
+//src: https://github.com/tomaka/glium/blob/master/examples/tutorial-05.rs
+
 #[macro_use]
 extern crate glium;
 
