@@ -37,6 +37,8 @@ fn main() {
     match x {
         e @ 1 ... 5 => println!("got a range element {}", e),
         e @ 6 => println!("got a 6, {}", e),//can have same e, no conflicts(makes sense actually)
+        e @ 7...9 | e @ 11...12 => println!("got OR range {}",e),
+        //src: https://doc.rust-lang.org/nightly/book/patterns.html#bindings
         _ => println!("anything"),
     }
 
@@ -107,9 +109,12 @@ fn main() {
 
 
     //If you want to match against a slice or array, you can use []:
-    let v = vec!["match_this", "1"];
+/*    let v = vec!["match_this", "1"];
     match v.as_slice() {
-        ["match_this", second] => println!("The second element is {}", second),
+FIXME:        ["match_this", second] => println!("The second element is {}", second),
         _ => {},
-    }
+    }*/
+
+    let (x, y): (i32, i32) = (5, 6); //src: https://rust-lang.github.io/book/ch03-02-variable-bindings.html
+
 }
