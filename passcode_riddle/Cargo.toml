@@ -1,0 +1,6 @@
+[package]
+name = "passcode_riddle"
+version = "0.1.0"
+authors = ["icanrealizeum <icanrealizeum@gmail.com>"]
+
+[dependencies]
