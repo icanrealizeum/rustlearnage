@@ -1,5 +1,4 @@
 // can you solve the passcode riddle https://www.youtube.com/watch?v=7Vd1dTBVbFg
-//uhm, why am I not getting 2 2 9?
 fn main() {
     for x in 1..10 {
         for y in 1..10 {
