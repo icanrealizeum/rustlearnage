@@ -50,6 +50,36 @@ impl std::cmp::Ord for Moo {
     }
 }
 
+// this does accept multiple args like println!
+macro_rules! print_err { //src: https://github.com/rust-lang/rfcs/issues/1078#issue-69693246
+    ($($arg:tt)*) => (
+        {
+            use std::io::prelude::*;
+            if let Err(e) = write!(&mut ::std::io::stderr(), "{}\n", format_args!($($arg)*)) {
+                panic!("Failed to write to stderr.\
+                    \nOriginal error output: {}\
+                    \nSecondary error writing to stderr: {}", format!($($arg)*), e);
+            }
+        }
+    )
+}
+
+use std::env;//can't use this in body because it says it's already used
+macro_rules! dprintln {
+//    ( $( $x:tt ),* ) => {
+//    ( $( $x:expr ),* ) => { //see: https://doc.rust-lang.org/nightly/book/macros.html#matching
+    ( $( $x:tt )* ) => { //see: https://doc.rust-lang.org/nightly/book/macros.html#matching
+//src: https://doc.rust-lang.org/std/env/fn.var.html
+        let key = "DEBUG";
+        match env::var(key) {
+            Ok(ref val) if val.as_str() != "0" => { print_err!($( $x )*);
+            },//println!("{}: {:?}", key, val),
+            //Err(e) => println!("couldn't interpret {}: {}", key, e),
+            Err(_) | Ok(_) => {},
+        }
+    }
+}
+
 fn main() {
     const MAX:u8 = 9;
     //casting to different types! how nice is that ;-)
@@ -65,7 +95,7 @@ fn main() {
                         {
                             let m:Moo = Moo {x:x, y:y,z:z,sum:(x+y+z) as u16};
                             candidates.push(m);//clue2 - storing all sums, for now
-                    println!("{} {} {} sum={}",x,y,z,x+y+z);
+                    dprintln!("{} {} {} sum={}",x,y,z,x+y+z);
                 } else {
 //                    println!("{} {} {} rejected",x,y,z);
                 }
@@ -74,7 +104,7 @@ fn main() {
     }
     //println!("{}",x);
     candidates.sort();
-    println!("Candidates(clue1): {:?}",candidates);
+    dprintln!("Candidates(clue1): {:?}",candidates);
     //should keep only dups, because that's why she's unsure - and needed clue3
     //irrelevant block, ignore:
 /*    let mut prev=0;
@@ -95,7 +125,7 @@ fn main() {
             cand2.push(candidates[i+1].clone());
         }
     }
-    println!("Candidates(after clue2): {:?}", cand2);//when she's unsure
+    dprintln!("Candidates(after clue2): {:?}", cand2);//when she's unsure
     for i in cand2.iter() {
         if i.z != i.y {//clue3 - largest number appears only once
             println!("Found valid passcode {:?}", i);
