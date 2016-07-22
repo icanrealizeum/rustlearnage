@@ -21,3 +21,6 @@ main
 *~
 
 tags
+
+#rustfmt backup files
+*.bk
