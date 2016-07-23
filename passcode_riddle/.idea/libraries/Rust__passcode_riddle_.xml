@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Rust &lt;passcode_riddle&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../rust/rust/src/libstd" />
+      <root url="file://$PROJECT_DIR$/../../rust/rust/src/libcore" />
+      <root url="file://$PROJECT_DIR$/../../rust/rust/src/libcollections" />
+      <root url="file://$PROJECT_DIR$/../../rust/rust/src/liballoc" />
+      <root url="file://$PROJECT_DIR$/../../rust/rust/src/librustc_unicode" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
