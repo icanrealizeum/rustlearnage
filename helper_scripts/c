@@ -1,3 +1,6 @@
 #!/bin/bash
 
-cargo clean -v
+cargo clean -v -p "${PWD##*/}"
+#^ clean only the exe  aka -p projectnamehere
+# to clean all(the deps too, eg. when using clippy, its deps which are kinda costly to rebuild then just don't use -p ...)
+

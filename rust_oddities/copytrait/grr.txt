@@ -1,0 +1,11 @@
+after ./c aka clean
+it takes 1min24sec to ./go aka compile
+because of the clippy plugin
+hmm must find a better way
+
+cargo clean -p copytrait
+# ^ this cleans only the exe! not the deps!
+
+# thanks to thewormkill on irc who also stated the same thing but I only saw that afterwards!
+
+
