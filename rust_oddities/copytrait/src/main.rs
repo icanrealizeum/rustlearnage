@@ -19,4 +19,13 @@ fn main() {
     let reffirst:&i32 = &a[0]; //TODO: find out how to keep a ref and still allow assignment - eg. move this line above the assignment line a[0]=7; and have it work!
 
     println!("The value of first is: {} {} {}", first, oldfirst, reffirst);
+
+    //same syntax can do either an implicity copy or an implicit move - i'd rather have one or the
+    //other! if not at least warn me?
+    let a1 = [1,2,3];
+    let first1 = a[0]; // implicit copy
+    let second = a[1];
+    let b = [String::from("1"),String::from("2"),String::from("3")];
+//    let fb=b[0]; // this wants to do an implicit move
+//    let sb=b[1];
 }
