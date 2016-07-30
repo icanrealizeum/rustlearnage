@@ -11,7 +11,7 @@
 fn main() {
     let mut a = [1, 2, 3, 4, 5];
 
-    //implicity Copy trait - the bane of Rust :)
+    //implicit Copy trait - the bane of Rust :)
     let first = a[0]; //can I prevent this Copy from happening? a lint for it? eg. I actually wanted &a[0] or a move
     let oldfirst = a[0].clone();//this is acceptable! but implicitly copy like above isn't! TODO: find a way to disable Copy trait!
 
