@@ -62,4 +62,7 @@ fn main() {
 //        value anymore!
     }//block has no effect, I just have to move it back manually! obv.
     println!("{:?}",x);
+
+//    let a=1;
+//    let a=2;//not allowed by clippy - this is why I love it! hehe
 }
