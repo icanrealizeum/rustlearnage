@@ -1,10 +1,12 @@
 # rustLearnage
 this will help me learn rust and experiment here  
+Don't expect anything here to be consistent and up to date!  
+Outdated code should be common.  
 
 
 ## Authors
 
-Currently almost everything (all functions, files, text) in this repository are made by me @ActualizeInMaterial and I've dedicated this repository to public domain.
+Currently almost everything (all functions, files, text) in this repository are made by me @icanrealizeum and I've dedicated this repository to public domain.
 
 This readme is originally from: https://github.com/davispuh/CLI-Console/blob/master/README.md
 
