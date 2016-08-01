@@ -65,4 +65,8 @@ fn main() {
 
 //    let a=1;
 //    let a=2;//not allowed by clippy - this is why I love it! hehe
+//
+    //1; // #goodgirlclippy
+    //2;
+    //3;
 }
