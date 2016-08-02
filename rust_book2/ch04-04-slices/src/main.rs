@@ -18,6 +18,9 @@ fn first_word(s: &String) -> usize {
     // So we match against the tuple with i for the index, and &byte for
     // the byte itself.
     //for (i, &byte) in bytes.iter().enumerate() {
+    let heart = '❤';//lol wait, outdated doc? https://doc.rust-lang.org/std/primitive.char.html#representation
+    println!("{}", heart);//yup, looks like it - rust nightly can do this.
+    //let heart2 = '❤️'; //oh, wait - nevermind! I guess this looks the same but it's different!!! - aka this errors!
     for (i, chr) in s.chars().enumerate() {
 
         //println!("Processing {} {}",i,byte);
@@ -45,10 +48,12 @@ fn main() {
     //ok this explains it: http://www.joelonsoftware.com/articles/Unicode.html
     //since high bits are always at least 10, there won't be any 0x20 dangling around as part of
     //the utf8 represented unicode - except 0x20 itself :D
-    let s=String::from("Ԡ123԰4Ġ❤️well");
+    let s=String::from("❤️Ԡ123԰4Ġ❤️we❤️ll❤ok");//ok this last ❤ is one codepoint!!!
     //❤️ is two unicode code points which is why you'll see a blank after it!
     //src: https://doc.rust-lang.org/std/primitive.char.html
     let word = first_word(&s);
     // word is now totally invalid! There’s no more word here.
+    println!("{}", '\u{2764}');//since this is ... good enough for the heart!
+    println!("{}", '\u{fe0f}');//why is this needed? well, ok: https://www.fileformat.info/info/unicode/char/2764/index.htm variation selector
     println!("{}",word);
 }
