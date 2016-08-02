@@ -56,4 +56,5 @@ fn main() {
     println!("{}", '\u{2764}');//since this is ... good enough for the heart!
     println!("{}", '\u{fe0f}');//why is this needed? well, ok: https://www.fileformat.info/info/unicode/char/2764/index.htm variation selector
     println!("{}",word);
+    println!("heart.len {}",String::from("❤️").len());//6
 }
