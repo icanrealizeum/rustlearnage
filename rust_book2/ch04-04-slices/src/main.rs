@@ -17,11 +17,14 @@ fn first_word(s: &String) -> usize {
     // Since it’s a tuple, we can use patterns, just like elsewhere in Rust.
     // So we match against the tuple with i for the index, and &byte for
     // the byte itself.
-    for (i, &byte) in bytes.iter().enumerate() {
+    //for (i, &byte) in bytes.iter().enumerate() {
+    for (i, chr) in s.chars().enumerate() {
 
-        println!("Processing {} {}",i,byte);
+        //println!("Processing {} {}",i,byte);
+        println!("Processing {} {}",i,chr);
         // 32 is the value of a space in UTF-8
-        if byte == 0x20 {
+        //if chr == 0x20 {
+        if chr == '\u{0020}' {
 
             // We found a space! Return this position.
             return i;
@@ -42,7 +45,9 @@ fn main() {
     //ok this explains it: http://www.joelonsoftware.com/articles/Unicode.html
     //since high bits are always at least 10, there won't be any 0x20 dangling around as part of
     //the utf8 represented unicode - except 0x20 itself :D
-    let s=String::from("Ԡ123԰4Ġ");
+    let s=String::from("Ԡ123԰4Ġ❤️well");
+    //❤️ is two unicode code points which is why you'll see a blank after it!
+    //src: https://doc.rust-lang.org/std/primitive.char.html
     let word = first_word(&s);
     // word is now totally invalid! There’s no more word here.
     println!("{}",word);
