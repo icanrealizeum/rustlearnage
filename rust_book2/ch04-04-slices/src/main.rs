@@ -1,0 +1,46 @@
+//https://rust-lang.github.io/book/ch04-04-slices.html
+
+fn first_word(s: &String) -> usize {
+
+    // Since we need to go through the String element by element, and
+    // check if a value is a space, we will convert our String to an
+    // array of bytes, using the `.as_bytes()` method.
+    let bytes = s.as_bytes();
+
+    // We discussed using the iter() method with for in Chapter 3.7. Here,
+    // we’re adding another method: enumerate(). While iter() returns each
+    // element, enumerate() modifies the result of iter(), and returns a
+    // tuple instead. The first element of the tuple is the index, and the
+    // second element is a reference to the element itself. This is a bit
+    // nicer than calculating the index ourselves.
+    //
+    // Since it’s a tuple, we can use patterns, just like elsewhere in Rust.
+    // So we match against the tuple with i for the index, and &byte for
+    // the byte itself.
+    for (i, &byte) in bytes.iter().enumerate() {
+
+        println!("Processing {} {}",i,byte);
+        // 32 is the value of a space in UTF-8
+        if byte == 0x20 {
+
+            // We found a space! Return this position.
+            return i;
+        }
+    }
+
+    // If we got here, we didn’t find a space, so this whole thing must be a
+    // word. So return the length.
+    s.len()
+}
+
+fn main() {
+    //ok, apparently 0x20 isn't part of any unicode char seen as utf-8 as far as i tested until
+    //here(not all):
+    //http://www.utf8-chartable.de/unicode-utf8-table.pl?start=121856&number=1024&utf8=0x
+    //about to search here next(as soon as internet is back):
+    //http://www.fileformat.info/search/search.htm?q=0x20
+    let s=String::from("Ԡ123԰4Ġ");
+    let word = first_word(&s);
+    // word is now totally invalid! There’s no more word here.
+    println!("{}",word);
+}
