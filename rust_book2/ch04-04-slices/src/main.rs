@@ -39,6 +39,9 @@ fn main() {
     //http://www.utf8-chartable.de/unicode-utf8-table.pl?start=121856&number=1024&utf8=0x
     //about to search here next(as soon as internet is back):
     //http://www.fileformat.info/search/search.htm?q=0x20
+    //ok this explains it: http://www.joelonsoftware.com/articles/Unicode.html
+    //since high bits are always at least 10, there won't be any 0x20 dangling around as part of
+    //the utf8 represented unicode - except 0x20 itself :D
     let s=String::from("Ԡ123԰4Ġ");
     let word = first_word(&s);
     // word is now totally invalid! There’s no more word here.
