@@ -48,7 +48,7 @@ fn main() {
     //ok this explains it: http://www.joelonsoftware.com/articles/Unicode.html
     //since high bits are always at least 10, there won't be any 0x20 dangling around as part of
     //the utf8 represented unicode - except 0x20 itself :D
-    let s=String::from("❤️Ԡ123԰4Ġ❤️we❤️ll❤ok");//ok this last ❤ is one codepoint!!!
+    let s=String::from("❤️Ԡ12\u{14}3԰4Ġ❤️we❤️ll❤ok");//ok this last ❤ is one codepoint!!!
     //❤️ is two unicode code points which is why you'll see a blank after it!
     //src: https://doc.rust-lang.org/std/primitive.char.html
     let word = first_word(&s);
