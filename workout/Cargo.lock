@@ -2,13 +2,12 @@
 name = "workout"
 version = "0.1.0"
 dependencies = [
- "cursive 0.2.1 (git+https://github.com/gyscos/Cursive)",
+ "cursive 0.2.1",
 ]
 
 [[package]]
 name = "cursive"
 version = "0.2.1"
-source = "git+https://github.com/gyscos/Cursive#ce6992a8c5589e82968bb3196ec7297f662be255"
 dependencies = [
  "ncurses 5.80.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "odds 0.2.14 (registry+https://github.com/rust-lang/crates.io-index)",
