@@ -1,21 +1,18 @@
-//src: https://stackoverflow.com/questions/26321592/how-can-i-read-one-character-from-stdin-without-having-to-hit-enter/27335584#27335584
-
-extern crate ncurses;
-use ncurses::*; // watch for globs
+extern crate cursive;
+use cursive::prelude::*;
 
 fn main() {
 	println!("Hello, world!");
-	initscr();
-	/* Print to the back buffer. */
-	printw("Hello, world!");
+    // src: https://github.com/gyscos/Cursive
+	// Creates the cursive root - required for every application.
+	let mut siv = Cursive::new();
 
-	/* Update the screen. */
-	refresh();
+	// Creates a dialog with a single "Quit" button
+	siv.add_layer(Dialog::new(TextView::new("Hello Dialog!"))
+				  .title("Cursive")
+				  .button("Quit", |s| s.quit()));
 
-	/* Wait for a key press. */
-	let c=getch();
-
-	/* Terminate ncurses. */
-	endwin();
-    println!("{}",c);
+	// Starts the event loop.
+	siv.run();
+	//println!("{}",c);
 }
