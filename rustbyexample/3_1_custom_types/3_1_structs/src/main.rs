@@ -16,6 +16,7 @@ struct Rectangle {
 }
 
 // A struct with two fields
+#[derive(Clone,Copy)]
 struct Point {
     x: f32,
     y: f32,
@@ -64,6 +65,12 @@ fn main() {
         p1: Point{x:14_f32,y:9_f32},
         p2: Point{x:48_f32,y:27.0}};
     assert_eq!(rect_area(&r1_2), rect_area(&r1));
+
+    let r2=square(Point{x:14.0,y:9.0}, 20.0);
+    assert_eq!(rect_area(&r2), 400.0);
+
+    let r3=square(Point{x:-1.0,y:10.0}, 20.0);
+    assert_eq!(rect_area(&r3), 400.0);
 }
 
 fn rect_area(r: &Rectangle) -> f32
@@ -75,3 +82,9 @@ fn rect_area(r: &Rectangle) -> f32
 
   width*height
 }
+
+fn square(p: Point, f: f32) -> Rectangle
+{
+    Rectangle{p1: p, p2: Point{x:p.x+f, y:p.y+f}}
+}
+
