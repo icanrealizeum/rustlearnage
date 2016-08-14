@@ -1,8 +1,19 @@
+// src: https://rustbyexample.com/custom_types/structs.html
+// ^ I keep forgetting these, but it's obvious where the code is from!
+
 // A unit struct
 struct Nil;
 
 // A tuple struct
 struct Pair(i32, f32);
+
+// Structs can be reused as fields of another struct
+// and order doesn't matter!(aka forward declaration not needed)
+#[allow(dead_code)]
+struct Rectangle {
+    p1: Point,
+    p2: Point,
+}
 
 // A struct with two fields
 struct Point {
@@ -10,12 +21,6 @@ struct Point {
     y: f32,
 }
 
-// Structs can be reused as fields of another struct
-#[allow(dead_code)]
-struct Rectangle {
-    p1: Point,
-    p2: Point,
-}
 
 fn main() {
     // Instantiate a `Point`
@@ -43,4 +48,30 @@ fn main() {
     let Pair(integer, decimal) = pair;
 
     println!("pair contains {:?} and {:?}", integer, decimal);
+    println!("area={}", rect_area(&_rectangle));
+    let r=Rectangle{
+        p1: Point{x:15_f32,y:10_f32},
+        p2: Point{x:50_f32,y:27.0}};
+    println!("area={}", rect_area(&r));
+    assert_eq!(rect_area(&r), 595.0);
+
+    let r1=Rectangle{
+        p1: Point{x:48_f32,y:9_f32},
+        p2: Point{x:14_f32,y:27.0}};
+    println!("area={}", rect_area(&r1));
+    assert_eq!(rect_area(&r1), 612.0);
+    let r1_2=Rectangle{
+        p1: Point{x:14_f32,y:9_f32},
+        p2: Point{x:48_f32,y:27.0}};
+    assert_eq!(rect_area(&r1_2), rect_area(&r1));
+}
+
+fn rect_area(r: &Rectangle) -> f32
+{
+  let Rectangle{p1: Point{x,y}, p2: Point{x:x2,y:y2}} = *r;
+
+  //src: http://www.mathopenref.com/coordrectareaperim.html
+  let (width, height)= ( (y-y2).abs(), (x-x2).abs());
+
+  width*height
 }
