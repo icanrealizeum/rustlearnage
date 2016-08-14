@@ -2,6 +2,7 @@
 #
 #unset RUST_BACKTRACE
 #workaround issue: 29293 https://github.com/rust-lang/rust/issues/29293
+echo "RUST_BACKTRACE=$RUST_BACKTRACE"
 time cargo run -v
 
 
