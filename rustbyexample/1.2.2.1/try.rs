@@ -18,7 +18,7 @@ impl fmt::Display for List {
             // before calling `write!`. Use `try!` to return on errors.
             if count != 0 { try!(write!(f, ", ")); }
 
-            try!(write!(f, "{}", v));
+            try!(write!(f, "{}: {}", count,v));
         }
 
         // Close the opened bracket and return a fmt::Result value
