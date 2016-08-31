@@ -2,6 +2,9 @@
 #![feature(core_intrinsics)]
 //https://doc.rust-lang.org/stable/std/intrinsics/index.html
 
+use std::process::Command;
+use std::str;
+
 fn print_type_of<T>(_: &T) -> () {
     let type_name =
         unsafe {
@@ -15,5 +18,9 @@ fn main() -> () {
     print_type_of(&(vec!(1, 2, 4))); // prints "collections::vec::Vec<i32>"
     let x = 5; // x: i32 //src: https://doc.rust-lang.org/nightly/book/variable-bindings.html
     print_type_of(&x);
+
+    //src: https://github.com/rust-lang/rust-playpen/issues/247#issuecomment-243658273
+
+    println!("{}", str::from_utf8(&Command::new("rustc").arg("-vV").output().unwrap().stdout).unwrap());
 }
 
