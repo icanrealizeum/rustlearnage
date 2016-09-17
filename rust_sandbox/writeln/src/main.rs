@@ -4,6 +4,6 @@ use std::io::{Write, stdout, stderr};
 fn main() {
     let mut out = stdout();
     let mut err = stderr();
-    writeln!(&mut out, "Hello world1");
-    writeln!(&mut err, "Hello world2");
+    writeln!(&mut out, "Hello world stdout");
+    println!("{:?}",writeln!(&mut err, "Hello world stderr"));
 }
